@@ -21,7 +21,8 @@ steps:
   - 'REGION'
   - '--platform'
   - 'managed'
+# Substitutions must begin with an underscore (_) 
 substitutions:
-    SERVICE_NAME: 'cloudbuild_dokerfile_example_run'
+    _SERVICE_NAME: 'cloudbuild_dokerfile_example_run'
 images:
 - 'gcr.io/$PROJECT_ID/${SERVICE_NAME}:$COMMIT_SHA'
