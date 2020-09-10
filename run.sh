@@ -19,14 +19,13 @@ gcloud run deploy $SERVICE_NAME --image $img --region $region \
 
 echo " -------- Clean up ----------"
 ## Clean up
-#gcloud container images delete $img || exit 1
+gcloud container images delete $img || exit 1
 
-gcloud beta artifacts docker images delete $img || exit 1
 
-### To delete the Cloud Run service, use this command:
-#gcloud run services delete $SERVICE_NAME \
-#   --platform managed \
-#   --region $region --quiet || exit 1
+###### To delete the Cloud Run service, use this command:
+##gcloud run services delete $SERVICE_NAME \
+##   --platform managed \
+##   --region $region --quiet || exit 1
 
 ls
 
