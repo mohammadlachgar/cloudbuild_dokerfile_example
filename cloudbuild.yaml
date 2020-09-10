@@ -24,6 +24,6 @@ steps:
 # Substitutions must begin with an underscore (_) 
 substitutions:
     _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
-#images:
-#- 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
+####images:
+##- 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
 
