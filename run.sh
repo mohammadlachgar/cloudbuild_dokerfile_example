@@ -24,7 +24,7 @@ gcloud container images delete $img || exit 1
 # To delete the Cloud Run service, use this command:
 gcloud run services delete $SERVICE_NAME \
    --platform managed \
-   --region $region || exit 1
+   --region $region --quiet || exit 1
 
 ls
 
