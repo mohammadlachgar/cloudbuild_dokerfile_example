@@ -15,7 +15,7 @@ echo " -------- Cloud run ----------"
 gcloud run deploy $SERVICE_NAME --image $img --region $region \
   --platform managed \
   --allow-unauthenticated \
-  --port 80
+
 
 echo " -------- Clean up ----------"
 # Clean up

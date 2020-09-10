@@ -13,7 +13,7 @@ steps:
     # get --region from https://cloud.google.com/run/docs/locations
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
-  args: ['run.sh']
+  args: ['run.sh || exit 0']
   env:
   - 'COMMITsha=$COMMIT_SHA'
   - 'PROJECTid=$PROJECT_ID'
