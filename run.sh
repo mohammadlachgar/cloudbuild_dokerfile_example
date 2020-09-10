@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo " -------- Hello ----------"
 
 mkdir -p ./creds 
 
@@ -9,12 +10,14 @@ gcloud secrets versions access latest --secret=$name_secret --format='get(payloa
 
 gcloud auth activate-service-account --key-file ./creds/serviceaccount.json
 
+echo " -------- Cloud run ----------"
 #https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]allow-unauthenticated
 gcloud run deploy $SERVICE_NAME --image $img --region $region \
   --platform managed \
   --allow-unauthenticated \
   --port 80
 
+echo " -------- Clean up ----------"
 # Clean up
 gcloud container images delete $img
 
@@ -25,4 +28,4 @@ gcloud container images delete $img
 
 ls
 
-echo " -------- Hello ----------"
+echo " -------- End ----------"
