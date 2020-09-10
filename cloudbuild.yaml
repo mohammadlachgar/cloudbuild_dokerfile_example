@@ -9,8 +9,8 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA']
 # 3) Deploy container image to Cloud Run
-#  Service name must use only lowercase alphanumeric characters and dashes (-).
-#  Cannot begin or end with a dash, and cannot be longer than 63 characters.
+  #  Service name must use only lowercase alphanumeric characters and dashes (-).
+    #  Cannot begin or end with a dash, and cannot be longer than 63 characters.
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args:
@@ -28,3 +28,7 @@ substitutions:
     _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
 images:
 - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
+#fix ===> ERROR: (gcloud.run.deploy) PERMISSION_DENIED:
+    # Permission denied on 'locations/REGION' (or it may not exist)
+   # go to==> https://console.cloud.google.com/cloud-build/settings
+   # In the Service account permissions panel, set the status of the Cloud Run Admin role to ENABLED:
