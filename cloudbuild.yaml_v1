@@ -12,16 +12,24 @@ steps:
     #  Service name must use only lowercase alphanumeric characters and dashes (-).Cannot begin or end with a dash, and cannot be longer than 63 characters.
     # get --region from https://cloud.google.com/run/docs/locations
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: 'bash'
-  args: ['run.sh']
-  env:
-  - 'COMMITsha=$COMMIT_SHA'
-  - 'PROJECTid=$PROJECT_ID'
-  - 'SERVICE_NAME=${_SERVICE_NAME}'
-  - 'region=us-central1'
-  - 'name_secret="SERVICEACCOUNT_cloud_run"'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE_NAME}'
+  - '--image'
+  - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
+  - '--region'
+  - 'us-central1'
+  - '--platform'
+  - 'managed'
 # Substitutions must begin with an underscore (_) 
 substitutions:
     _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
 images:
 - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
+#fix ===> ERROR: (gcloud.run.deploy) PERMISSION_DENIED:
+    # Permission denied on 'locations/REGION' (or it may not exist)
+    # set --region
+   # go to==> https://console.cloud.google.com/cloud-build/settings
+   # In the Service account permissions panel, set the status of the Cloud Run Admin role to ENABLED:

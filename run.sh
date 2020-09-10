@@ -1,6 +1,5 @@
 #!/bin/bash
 
-. ./variables.sh
 
 mkdir -p ./creds 
 
@@ -9,6 +8,8 @@ mkdir -p ./creds
 gcloud secrets versions access latest --secret=$name_secret --format='get(payload.data)' | tr '_-' '/+' | base64 -d > ./creds/serviceaccount.json
 
 gcloud auth activate-service-account --key-file ./creds/serviceaccount.json
+
+gcloud run deploy $SERVICE_NAME --image gcr.io/$PROJECTid/$SERVICE_NAME:$COMMITsha --region $region --platform managed
 
 
 ls
