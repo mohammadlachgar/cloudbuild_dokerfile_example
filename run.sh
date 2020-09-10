@@ -9,7 +9,7 @@ gcloud secrets versions access latest --secret=$name_secret --format='get(payloa
 
 gcloud auth activate-service-account --key-file ./creds/serviceaccount.json
 
-gcloud run deploy $SERVICE_NAME --image gcr.io/$PROJECTid/$SERVICE_NAME:$COMMITsha --region $region --platform managed
+gcloud run deploy $SERVICE_NAME --image gcr.io/$PROJECTid/$SERVICE_NAME:$COMMITsha --region $region --platform managed --port 80
 
 
 ls

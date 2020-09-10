@@ -2,3 +2,5 @@
 FROM httpd:2.4
 # Copy the static page from the target directory to apache2 docs
 COPY ./public-html/ /usr/local/apache2/htdocs/
+ENV PORT 80
+EXPOSE 80
