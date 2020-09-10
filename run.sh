@@ -14,7 +14,7 @@ echo " -------- Cloud run ----------"
 #https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]allow-unauthenticated
 gcloud run deploy $SERVICE_NAME --image $img --region $region \
   --platform managed \
-  --allow-unauthenticatedxx \
+  --allow-unauthenticated \
   --port 80 || exit 1
 
 echo " -------- Clean up ----------"
