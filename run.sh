@@ -18,8 +18,8 @@ gcloud run deploy $SERVICE_NAME --image $img --region $region \
   --port 80 || exit 1
 
 echo " -------- Clean up ----------"
-# Clean up
-gcloud container images delete $img || exit 1
+## Clean up
+#gcloud container images delete $img || exit 1
 
 gcloud beta artifacts docker images delete $img || exit 1
 
