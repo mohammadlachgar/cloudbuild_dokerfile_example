@@ -20,6 +20,7 @@ steps:
   - 'SERVICE_NAME=${_SERVICE_NAME}'
   - 'region=us-central1'
   - 'name_secret=SERVICEACCOUNT_cloud_run'
+  - 'img=gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
 # Substitutions must begin with an underscore (_) 
 substitutions:
     _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
