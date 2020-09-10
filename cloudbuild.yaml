@@ -2,13 +2,15 @@
 # $PROJECT_ID: ID of your Cloud project
 # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
 steps:
-    # Build the container image
+# 1) Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA', '.']
-    # Push the container image to Container Registry
+# 2) Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA']
-    # Deploy container image to Cloud Run
+# 3) Deploy container image to Cloud Run
+#  Service name must use only lowercase alphanumeric characters and dashes (-).
+#  Cannot begin or end with a dash, and cannot be longer than 63 characters.
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args:
@@ -23,6 +25,6 @@ steps:
   - 'managed'
 # Substitutions must begin with an underscore (_) 
 substitutions:
-    _SERVICE_NAME: 'cloudbuild_dokerfile_example_run'
+    _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
 images:
 - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$COMMIT_SHA'
