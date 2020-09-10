@@ -19,7 +19,7 @@ steps:
   - 'PROJECTid=$PROJECT_ID'
   - 'SERVICE_NAME=${_SERVICE_NAME}'
   - 'region=us-central1'
-  - 'name_secret="SERVICEACCOUNT_cloud_run"'
+  - 'name_secret=SERVICEACCOUNT_cloud_run'
 # Substitutions must begin with an underscore (_) 
 substitutions:
     _SERVICE_NAME: 'cloudbuild-dokerfile-example-run'
