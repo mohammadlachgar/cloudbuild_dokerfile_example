@@ -17,9 +17,9 @@ gcloud run deploy $SERVICE_NAME --image $img --region $region \
   --allow-unauthenticated \
   --port 80 || exit 1
 
-echo " -------- Clean up ----------"
+#echo " -------- Clean up ----------"
 ## Clean up
-gcloud container images delete $img || exit 1
+#gcloud container images delete $img || exit 1
 #  || exit 1 ===> Exit if exists error
 
 echo " COMMITsha ==> $COMMITsha"
