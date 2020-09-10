@@ -10,7 +10,7 @@ gcloud secrets versions access latest --secret=$name_secret --format='get(payloa
 gcloud auth activate-service-account --key-file ./creds/serviceaccount.json
 
 #https://cloud.google.com/sdk/gcloud/reference/run/deploy#--[no-]allow-unauthenticated
-gcloud run deploy $SERVICE_NAME --image gcr.io/$PROJECTid/$SERVICE_NAME:$COMMITsha --region $region --platform managed --allow-unauthenticated --port 8080
+gcloud run deploy $SERVICE_NAME --image gcr.io/$PROJECTid/$SERVICE_NAME:$COMMITsha --region $region --platform managed --allow-unauthenticated --port 80
 
 
 ls
